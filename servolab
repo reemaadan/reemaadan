@@ -1,0 +1,11 @@
+def translate(degrees):
+    # keeps input to valid range
+    degrees = max(0, min(180, degrees))
+    
+    # convert degrees to pulse width (microseconds)
+    pulse_width = 500 + (2500 - 500) * degrees / 180
+    
+    # convert pulse width to duty_u16 value (0-65535)
+    duty_cycle = (pulse_width / 20000) * 65535
+    
+    return int(duty_cycle)
